@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Reporte de Proyecto</title>
+    <style>
+        body { font-family: Arial, sans-serif; font-size: 12px; }
+        h1 { color: #333; font-size: 18px; }
+        h2 { color: #555; font-size: 16px; margin-top: 20px; }
+        p { color: #555; margin: 5px 0; }
+        .details { margin-top: 20px; width: 100%; border-collapse: collapse; }
+        .details th, .details td { border: 1px solid #ddd; padding: 5px; font-size: 10px; }
+        .details th { background-color: #f2f2f2; }
+        .label { font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Reporte del Proyecto: {{ proyecto.PytNombre }}</h1>
+
+    <h2>Cliente</h2>
+    <p><span class="label">Nombres Completos:</span> {{ proyecto.PytCliente.CliNombres }} {{ proyecto.PytCliente.CliApepat }} {{ proyecto.PytCliente.CliApemat }}</p>
+
+    <h2>Proyecto</h2>
+    <p><span class="label">Nombre de proyecto:</span> {{ proyecto.PytNombre }}</p>
+    <p><span class="label">Primer contacto:</span> {{ proyecto.PytPrimercontacto|date('d M Y') }}</p>
+    <p><span class="label">Descripción:</span> {{ proyecto.PytDescripcion }}</p>
+
+    <h2>Versiones</h2>
+    {% if proyecto.PytVersiones is empty %}
+        <p>Sin versiones registradas.</p>
+    {% else %}
+        <table class="details">
+            <tr>
+                <th>Versión</th>
+                <th>Inicio</th>
+                <th>Fin Est.</th>
+                <th>Duración</th>
+                <th>Planificación</th>
+                <th>Presupuesto</th>
+                <th>Alcance</th>
+            </tr>
+            {% for version in proyecto.PytVersiones %}
+                <tr>
+                    <td>{{ version.VsDescripcion }}</td>
+                    <td>{{ version.VsFechainicio|date('d/m/Y') }}</td>
+                    <td>{{ version.VsFechafinestimada|date('d/m/Y') }}</td>
+                    <td>{{ version.VsDuracion }}</td>
+                    <td>{{ version.VsPlanificacion }}</td>
+                    <td>{{ version.VsPresupuesto }}</td>
+                    <td>{{ version.VsAlcance }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>

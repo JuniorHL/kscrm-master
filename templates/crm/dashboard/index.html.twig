@@ -1,0 +1,80 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content_title %}Dashboard{% endblock %}
+
+{% block main %}
+    <style>
+        .card-custom {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .card-custom .card-header {
+            padding: 10px 15px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .card-custom .card-body {
+            padding: 15px;
+            color: #333;
+        }
+
+        .bg-primary-custom {
+            background-color: #4a90e2;
+        }
+
+        .bg-success-custom {
+            background-color: #50c878;
+        }
+
+        .bg-warning-custom {
+            background-color: #ffae42;
+        }
+
+        .bg-danger-custom {
+            background-color: #d9534f;
+        }
+    </style>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card card-custom">
+                    <div class="card-header bg-primary-custom">Total Usuarios</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ totalUsuarios }}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-custom">
+                    <div class="card-header bg-success-custom">Total Clientes</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ totalClientes }}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-custom">
+                    <div class="card-header bg-warning-custom">Total Proyectos</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ totalProyectos }}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-custom">
+                    <div class="card-header bg-danger-custom">Total Versiones</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ totalVersiones }}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
